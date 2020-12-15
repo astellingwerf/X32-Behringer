@@ -599,14 +599,14 @@ int main(int argc, char **argv) {
 	int i;
 	//
 	// Init structures
-	strncpy(uriff.s, "riff",4);
-	strncpy(uRIFF.s, "RIFF",4);
-	strncpy(uwave.s, "wave",4);
-	strncpy(uWAVE.s, "WAVE",4);
-	strncpy(ufmt.s, "fmt ",4);
-	strncpy(uFMT.s, "FMT ",4);
-	strncpy(udata.s, "data",4);
-	strncpy(uDATA.s, "DATA",4);
+	memcpy(uriff.s, "riff",4);
+    memcpy(uRIFF.s, "RIFF",4);
+    memcpy(uwave.s, "wave",4);
+    memcpy(uWAVE.s, "WAVE",4);
+    memcpy(ufmt.s, "fmt ",4);
+    memcpy(uFMT.s, "FMT ",4);
+    memcpy(udata.s, "data",4);
+    memcpy(uDATA.s, "DATA",4);
 	//
 	keep_running = 1;		// mainloop flag
 	sampsel = 3;			// 1: 8 bits, 2: 16 bits, 3: 24 bits (default), 4: 32 bits
