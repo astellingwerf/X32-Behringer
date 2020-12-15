@@ -379,7 +379,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 				if (SBIN) fclose(SBIN);
 				SBIN = NULL;
 				if ((SBIN = fopen(Xspath, "r+")) == NULL) {
-					MESSAGE(NULL, "Error opening session log file");
+					MESSAGE(NULLSTR, "Error opening session log file");
 					return 1;
 				} else {
 					// display session name or default timestamp (if no name)
@@ -759,7 +759,7 @@ int main(int argc, char **argv) {
 			// Get and display session name
 			strcat(Xspath + slen, "SE_LOG.BIN");
 			if ((SBIN = fopen(Xspath, "r+")) == NULL) {
-				MESSAGE(NULL, "Error opening session or session log file");
+				MESSAGE(NULLSTR, "Error opening session or session log file");
 				return 1;
 			}
 			fseek(SBIN, 1552, SEEK_SET);
