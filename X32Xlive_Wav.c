@@ -83,6 +83,7 @@
 #define min(a,b) 		\
 			(((a)<(b))?(a):(b))
 #endif
+#define NULLSTR ""
 //
 #define NAMSIZ	16		// name string size
 #define MAXLR	512		// max size for reading scene lines
@@ -670,7 +671,7 @@ int main(int argc, char **argv) {
 				sscanf(optarg, "%d", &nbchans);
 				if (ChNamTable) free(ChNamTable);
 				if ((ChNamTable = malloc(nbchans * NAMSIZ * sizeof(char))) == 0) {
-					MESSAGE("Memory allocation error!", NULL);
+					MESSAGE("Memory allocation error!", NULLSTR);
 					nbchans = 0;
 				} else {
 					// create and assign default channel names
@@ -681,7 +682,7 @@ int main(int argc, char **argv) {
 				}
 				if (ChSrcTable) free(ChSrcTable);
 				if ((ChSrcTable = malloc(nbchans * sizeof(int))) == 0) {
-					MESSAGE("Memory allocation error!", NULL);
+					MESSAGE("Memory allocation error!", NULLSTR);
 					nbchans = 0;
 				} else {
 					// create and assign default channel names
@@ -949,7 +950,7 @@ FILE			*Sfile;
 		// next chunk should be "data" == 0x61746164
 		fread(sdata, 4, 1, Sfile);
 		if (sdata[0].i != 0x61746164) {
-			MESSAGE("Error reading source file!", NULL);
+			MESSAGE("Error reading source file!", NULLSTR);
 			return 1;
 		}
 		// read data length
@@ -1152,13 +1153,13 @@ FILE			*Sfile;
 		// update destination files' headers
 		fflush(Wfile[i]);
 		if (fseek(Wfile[i], 4, SEEK_SET) != 0) {
-			MESSAGE("Error Seek 4!", NULL);
+			MESSAGE("Error Seek 4!", NULLSTR);
 			return 1;
 		}
 		fwrite(&totalSize, 4, 1, Wfile[i]);
 		fflush(Wfile[i]);
 		if (fseek(Wfile[i], 40, SEEK_SET) != 0) {
-			MESSAGE("Error Seek 40!", NULL);
+			MESSAGE("Error Seek 40!", NULLSTR);
 			return 1;
 		}
 		fwrite(&totalBytes, 4, 1, Wfile[i]);
